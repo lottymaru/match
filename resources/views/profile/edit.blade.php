@@ -24,6 +24,17 @@
                     @include('profile.partials.delete-user-form')
                 </div>
             </div>
+            
+            <div>
+            <label>都道府県</label>
+                <select type="text" class="form-control" name="prefecture_id" required>
+                    <option disabled style='display:none;' @if (empty($post->prefecture_id)) selected @endif>選択してください</option>
+                    @foreach($prefectures as $pref)
+                        <option value="{{ $pref->id }}" @if (isset($post->prefecture_id) && ($post->prefecture_id === $pref->id)) selected @endif>{{ $pref->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
         </div>
     </div>
 </x-app-layout>
