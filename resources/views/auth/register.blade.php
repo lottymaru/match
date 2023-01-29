@@ -2,40 +2,64 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
-        <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('ニックネーム')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
-
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
         
         <div class="mt-4">
             <x-input-label for="gender" :value="__('性別')" />
-            <x-text-input id="gender" class="block mt-1 w-full" type="gender" name="gender" :value="old('gender')" required />
+                <select>
+                    <option value="man">男性</option>
+                    <option value="woman">女性</option>
+                    <option value="either">選択しない</option>
+                </select>
             <x-input-error :messages="$errors->get('gender')" class="mt-2" />
         </div>
-        
+         
         <div class="mt-4">
             <x-input-label for="age" :value="__('年齢')" />
-            <x-text-input id="age" class="block mt-1 w-full" type="age" name="age" :value="old('age')" required />
+                <select>
+                    <script>
+                    var i;
+                    for(i=18; i<100; i++){
+                    document.write('<option value='+i+'>'+i+'</option>');
+                    }
+                    </script>
+                </select>歳
             <x-input-error :messages="$errors->get('age')" class="mt-2" />
         </div>
         
         <div class="mt-4">
-            <x-input-label for="email" :value="__('性別')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="age" name="age" :value="old('age')" required />
+            <x-input-label for="area" :value="__('地域')" />
+                <select>
+                    <script>
+                    var i;
+                    for(i=18; i<100; i++){
+                    document.write('<option value='+i+'>'+i+'</option>');
+                    }
+                    </script>
+                </select>歳
             <x-input-error :messages="$errors->get('age')" class="mt-2" />
+        </div>
+    
+        
+        <div class="mt-4">
+            <x-input-label for="ability" :value="__('棋力')" />
+            <x-text-input id="ability" class="block mt-1 w-full" type="ability" name="ability" :value="old('ability')" required />
+            <x-input-error :messages="$errors->get('ability')" class="mt-2" />
         </div>
         
         
         
+        <!-- Email Address -->
+        <div class="mt-4">
+            <x-input-label for="email" :value="__('メールアドレス')" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
+
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('パスワード')" />
